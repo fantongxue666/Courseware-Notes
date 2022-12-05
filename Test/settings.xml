@@ -1,0 +1,75 @@
+﻿<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<!--
+	<localRepository>D:/工作/北软工具和工作文件/repository</localRepository>
+	-->
+	
+	<localRepository>D:/maven-repository</localRepository>
+	
+	<offline>false</offline>
+  <mirrors>
+	<mirror>
+      <id>Nexus</id>
+      <name>Nexus Public Mirror</name>
+	  <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+	  <!-- 我的私服 -->
+	  <!--<url>http://nexus.tiger2.cn/nexus/content/groups/public/</url>-->
+	  <!-- 北软私服 -->
+      <!--<url>http://192.168.1.233:8081/nexus/content/groups/public</url>-->
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <servers>
+		<server>
+			<id>snapshot</id>
+			<username>deployment</username>
+			<password>deploy</password>
+		</server>
+
+		<server>
+			<id>internal</id>
+			<username>deployment</username>
+			<password>deploy</password>
+		</server>
+
+		<server>
+			<id>nexus-releases</id>
+			<username>deployment</username>
+			<password>deploy</password>
+		</server>
+
+		<server>
+			<id>nexus-snapshots</id>
+			<username>deployment</username>
+			<password>deploy</password>
+		</server>
+	</servers>
+
+	<profiles>
+		<profile>
+		  <id>dayouzc</id>
+		  <repositories>
+			<repository>
+			  <id>dayouzc-nexus</id>
+			  <name>dayouzc Nexus Repository</name>
+			  <url>http://nexus.csctek.com.cn/nexus/content/repository/public/</url>
+			  <releases>
+				<enabled>true</enabled>
+			  </releases>
+			  <snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			  </snapshots>  
+			</repository>
+		  </repositories>
+    </profile>
+	</profiles>
+	
+	<!-- 激活相应得配置 -->
+	<activeProfiles>
+		<activeProfile>dayouzc</activeProfile>
+	</activeProfiles>
+</settings>
